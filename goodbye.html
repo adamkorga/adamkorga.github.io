@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscription Confirmed - IT Dictionary</title>
+    <title>Unsubscribed - IT Dictionary</title>
     <style>
         /* Reset and Base Styles */
         * {
@@ -36,36 +36,37 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Success Icon */
-        .success-icon {
+        /* Goodbye Icon */
+        .goodbye-icon {
             width: 80px;
             height: 80px;
             margin: 0 auto 30px;
-            background: #7c9885;
+            background: rgba(255, 107, 53, 0.2);
+            border: 2px solid #ff6b35;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 40px;
-            color: #ffffff;
+            color: #ff6b35;
         }
 
         /* Typography */
-        .confirmation-title {
+        .unsubscribe-title {
             font-size: 36px;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 20px;
         }
 
-        .confirmation-subtitle {
+        .unsubscribe-subtitle {
             font-size: 20px;
-            color: #7c9885;
+            color: #ff6b35;
             margin-bottom: 30px;
             font-weight: 600;
         }
 
-        .confirmation-message {
+        .unsubscribe-message {
             font-size: 16px;
             color: #d0d0d0;
             margin-bottom: 40px;
@@ -75,12 +76,12 @@
             margin-right: auto;
         }
 
-        .confirmation-message p {
+        .unsubscribe-message p {
             margin-bottom: 15px;
         }
 
-        .confirmation-message strong {
-            color: #ff6b35;
+        .unsubscribe-message strong {
+            color: #7c9885;
         }
 
         /* Call to Action */
@@ -105,17 +106,29 @@
             background: linear-gradient(135deg, #8faa98 0%, #a3c2ab 100%);
         }
 
-        /* Secondary Info */
-        .confirmation-note {
-            font-size: 14px;
-            color: #b0b0b0;
+        /* Resubscribe Option */
+        .resubscribe-section {
             margin-top: 40px;
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .confirmation-note p {
-            margin-bottom: 10px;
+        .resubscribe-text {
+            font-size: 14px;
+            color: #b0b0b0;
+            margin-bottom: 15px;
+        }
+
+        .resubscribe-link {
+            color: #7c9885;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .resubscribe-link:hover {
+            color: #8faa98;
+            text-decoration: underline;
         }
 
         /* Responsive Design */
@@ -124,15 +137,15 @@
                 padding: 40px 30px;
             }
 
-            .confirmation-title {
+            .unsubscribe-title {
                 font-size: 28px;
             }
 
-            .confirmation-subtitle {
+            .unsubscribe-subtitle {
                 font-size: 18px;
             }
 
-            .confirmation-message {
+            .unsubscribe-message {
                 font-size: 15px;
             }
 
@@ -147,15 +160,15 @@
                 padding: 30px 20px;
             }
 
-            .confirmation-title {
+            .unsubscribe-title {
                 font-size: 24px;
             }
 
-            .confirmation-subtitle {
+            .unsubscribe-subtitle {
                 font-size: 16px;
             }
 
-            .success-icon {
+            .goodbye-icon {
                 width: 60px;
                 height: 60px;
                 font-size: 30px;
@@ -165,30 +178,32 @@
 </head>
 <body>
     <div class="container">
-        <!-- Success Icon -->
-        <div class="success-icon">
-            ✓
+        <!-- Goodbye Icon -->
+        <div class="goodbye-icon">
+            👋
         </div>
 
         <!-- Main Content -->
-        <h1 class="confirmation-title">You're In!</h1>
-        <p class="confirmation-subtitle">Welcome to the madness.</p>
+        <h1 class="unsubscribe-title">Sad to See You Go</h1>
+        <p class="unsubscribe-subtitle">But hey, no hard feelings!</p>
         
-        <div class="confirmation-message">
-            <p>Thanks for subscribing to the IT Dictionary updates. You've just joined a select group of people who appreciate <strong>honest takes on tech chaos</strong>.</p>
+        <div class="unsubscribe-message">
+            <p>You've been successfully removed from the IT Dictionary mailing list.</p>
             
-            <p>You'll hear from me when there's actual progress to report — no spam, no nonsense, no discount codes for kitchen appliances.</p>
+            <p>Maybe my take on the tech world wasn't your cup of coffee, or perhaps your inbox was already drowning in notifications. <strong>Either way, totally understood.</strong></p>
             
-            <p>Just the occasional update from someone who's survived 20 years in IT and lived to document the experience.</p>
+            <p>If you ever change your mind — or if curiosity about the madness gets the better of you — you're always welcome back.</p>
+            
+            <p>Until then, may your code compile on the first try and your meetings actually end on time.</p>
         </div>
 
         <!-- Back to Main Site -->
         <a href="index.html" class="back-link">Back to IT Dictionary</a>
 
-        <!-- Additional Info -->
-        <div class="confirmation-note">
-            <p>Keep an eye on your inbox (and maybe your spam folder, just in case).</p>
-            <p>If you change your mind, you can unsubscribe anytime — no hard feelings.</p>
+        <!-- Resubscribe Option -->
+        <div class="resubscribe-section">
+            <p class="resubscribe-text">Changed your mind already?</p>
+            <a href="index.html?tab=subscribe" class="resubscribe-link">Subscribe again</a>
         </div>
     </div>
 </body>
