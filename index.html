@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Dictionary - Your Essential Guide to Technology Terms</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Column - Author Section -->
+        <div class="author-section">
+            <img src="image/avatar.png" alt="Author Avatar" class="avatar">
+            
+            <h2 class="author-name">Adam Korga</h2>
+            <p class="author-title">Self-proclaimed writer</p>
+            <p class="author-subtitle">Survived 20 years in IT. Mostly intact.</p>
+            
+            <div class="author-bio">
+                <p>A pen name. I try not to pull punches — though I do flinch when they come back.</p>
+                <p>I've been a developer, an architect, a scrum master, and a platform guy.
+                I've worked in startups that moved fast and broke things — and in enterprises that moved slow and broke people.</p>
+                <p>After nearly 20 years of collecting buzzwords, rituals, and pain (in roughly equal parts), I decided it's time someone documented the madness — with just enough irony to survive.</p>
+                <p>No, I won’t tell you which parts are based on real conversations.
+                <strong>You already know.</strong></p>
+            </div>
+            
+            <div class="social-links">
+                <a href="mailto:contact@adamkorga.com" class="social-link" title="Email">
+                    <img src="image/email.png" alt="Email Icon">
+                </a>
+                <a href="https://www.linkedin.com/in/adam-korga/" class="social-link" title="LinkedIn" target="_blank">
+                    <img src="image/linkedin.png" alt="LinkedIn Icon">
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Column - Content Section -->
+        <div class="content-section">
+            <!-- Tab Navigation -->
+            <nav class="tab-nav">
+                <button class="tab-button active" data-tab="book">Book</button>
+                <button class="tab-button" data-tab="subscribe">Subscribe</button>
+                <button class="tab-button" data-tab="amazon">Amazon</button>
+            </nav>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Book Tab -->
+                <div class="tab-pane active" id="book">
+                    <div class="book-header">
+                        <h1 class="book-title">IT Dictionary</h1>
+                        <p class="book-subtitle">The not-so-serious but brutally honest guide to the IT world and lingo</p>
+                    </div>
+                    
+                    <div class="book-content">
+                        <div>
+                            <div class="book-description">
+                                <p>From cryptic acronyms to absurd rituals, IT Dictionary unpacks the jargon, inside jokes, and quiet despair that make modern tech what it is.</p>
+
+The book is divided into five delightfully painful parts:</p>
+<ul class="book-parts">
+    <li>Part 1: Core IT – Survival Mode Activated: where the madness begins</li>
+    <li>Part 2: Agile Rituals and Other Cargo Cults: ceremonies, stand-ups, and status theater</li>
+    <li>Part 3: Corpoland – Where Ideas Go to Get Approved: enterprise life in all its bloated glory</li>
+    <li>Part 4: Startupistan – Chaos, Hoodie and Deadline: when “move fast” meets “break everything”</li>
+    <li>Part 5: AI – The New Kid in Town: buzzwords, hallucinations, and synthetic dreams</li>
+    <li>Bonus: Cursed UI collection</li>
+</ul>
+
+<p>With over 1,000 entries and a healthy dose of irony, this book helps you decode what people <i>really</i> mean when they say things like “we're being agile” or “just a small refactor.”</p>
+
+<p>If you’re a seasoned engineer — you’ll realize you’re not alone.</p>
+<p>If you’re just starting out — you’ll get a glimpse of what’s coming.</p>
+<p>And if you work with IT people — you might finally understand why most of us have that slightly haunted look in our eyes.</p>
+                            </div>
+                            
+                            <div class="sample-text">
+                                <h4>Sample Entry</h4>
+                                <p><strong>API (Application Programming Interface):</strong> A set of protocols, routines, and tools that allow different software applications to communicate with each other. APIs define how software components should interact and are used to build application software...</p>
+                            </div>
+                        </div>
+                        
+                        <img src="image/cover_wip.png" alt="IT Dictionary Book Cover" class="book-cover">
+                    </div>
+                </div>
+
+                <!-- Subscribe Tab -->
+                <div class="tab-pane" id="subscribe">
+                    <div class="subscribe-content">
+                        <h2 class="subscribe-title">Stay Updated</h2>
+                        <p class="subscribe-description">Get notified about new releases, exclusive content, and special offers.</p>
+                        
+                        <div class="form-placeholder">
+                            <h4>AWeber Form Placeholder</h4>
+                            <p>Replace this section with your AWeber form embed code.</p>
+                            <p>The form will be automatically styled to match the page design.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Amazon Tab -->
+                <div class="tab-pane" id="amazon">
+                    <div class="amazon-content">
+                        <h2 class="amazon-title">Get Your Copy</h2>
+                        <p class="amazon-description">Available now on Amazon in both paperback and Kindle editions.</p>
+                        
+                        <!-- <a href="#" class="amazon-button">View on Amazon</a> -->
+                        <p style="color: #ffffff; font-size: 16px; text-align: center; background: #7c7c7c; padding: 10px 20px; border-radius: 5px; display: inline-block; cursor: not-allowed;">Coming soon on Amazon</p>
+                        
+                        <div style="margin-top: 30px; padding: 20px; background: rgba(20, 24, 32, 0.6); border-radius: 8px;">
+                            <p style="color: #b0b0b0; font-size: 14px; margin-bottom: 10px;">Coming Soon:</p>
+                            <p style="color: #7c9885;">• Paperback Edition</p>
+                            <p style="color: #7c9885;">• Kindle Edition</p>
+                            <p style="color: #b0b0b0; font-size: 14px;">• <span style="text-decoration: line-through;">Audiobook Version</span> <span style="font-size: 12px;">(unless someone wants to record it)</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab Switching Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+
+                    // Remove active class from all buttons and panes
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+
+                    // Add active class to clicked button and corresponding pane
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+        });
+
+        // Smooth scrolling for mobile
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelector('.tab-content').scrollTop = 0;
+                });
+            });
+        }
+    </script>
+</body>
+</html>
