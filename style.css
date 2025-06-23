@@ -335,18 +335,55 @@
         /* Subscribe Tab Styles */
         .subscribe-content {
             text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .subscribe-title {
             font-size: 28px;
             color: #ffffff;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
         }
 
         .subscribe-description {
+            text-align: left;
+            margin-bottom: 40px;
+            color: #d0d0d0;
+            line-height: 1.6;
+        }
+
+        .subscribe-description p {
             font-size: 16px;
-            color: #b0b0b0;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
+        }
+
+        .subscribe-description p strong {
+            color: #7c9885;
+            font-weight: 600;
+        }
+
+        .subscribe-description ul {
+            margin: 15px 0 20px 20px;
+            padding-left: 20px;
+        }
+
+        .subscribe-description li {
+            font-size: 15px;
+            margin-bottom: 8px;
+            color: #b8b8b8;
+            list-style-type: disc;
+        }
+
+        .subscribe-cta {
+            font-size: 18px !important;
+            color: #ff6b35 !important;
+            font-weight: 600 !important;
+            text-align: center !important;
+            margin-top: 25px !important;
+            padding: 15px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #ff6b35;
         }
 
         .form-placeholder {
