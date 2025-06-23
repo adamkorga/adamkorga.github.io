@@ -53,7 +53,7 @@ function nextSampleEntry() {
 }
 
 // Tab Switching Functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const tabButtons = document.querySelectorAll('.tab-button');
 
     // Check for URL parameter on page load
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const targetTab = this.getAttribute('data-tab');
             switchToTab(targetTab);
             updateUrl(targetTab);
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Dot navigation
     document.querySelectorAll('.sample-dot').forEach(dot => {
-        dot.addEventListener('click', function(e) {
+        dot.addEventListener('click', function (e) {
             e.stopPropagation();
             const index = parseInt(this.getAttribute('data-index'));
             currentSampleIndex = index;
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Smooth scrolling for mobile
 if (window.innerWidth <= 768) {
     document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             document.querySelector('.tab-content').scrollTop = 0;
         });
     });
