@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Buzzword Bingo - IT Dictionary Bonus Tool</title>
+    <style>
+        /* Main styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(40, 44, 52, 0.95);
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: rgba(30, 34, 42, 0.8);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .setup-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #7c9885;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(124, 152, 133, 0.3);
+            padding-bottom: 5px;
+        }
+
+        .textarea-container {
+            margin-bottom: 20px;
+        }
+
+        .terms-textarea {
+            width: 100%;
+            height: 400px;
+            background: rgba(20, 24, 32, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            color: #e0e0e0;
+            font-family: monospace;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .terms-textarea:focus {
+            outline: none;
+            border-color: #7c9885;
+            background: rgba(20, 24, 32, 0.8);
+        }
+
+        .generate-btn {
+            background: #7c9885;
+            color: #ffffff;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .generate-btn:hover {
+            background: #8aa792;
+        }
+
+        .error-message {
+            color: #ff6b35;
+            font-size: 14px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .info-text {
+            color: #b0b0b0;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .line-counter {
+            color: #7c9885;
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .game-section {
+            display: none;
+        }
+
+        .bingo-board {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 3px;
+            max-width: 500px;
+            margin: 20px auto;
+            background: rgba(20, 24, 32, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .bingo-cell {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: 1px solid rgba(124, 152, 133, 0.3);
+            border-radius: 4px;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .bingo-cell:hover {
+            background: rgba(124, 152, 133, 0.2);
+            color: #fff;
+        }
+
+        .bingo-cell.marked {
+            background: #7c9885;
+            color: #ffffff;
+        }
+
+        .bingo-cell.winning {
+            background: #ff6b35;
+            color: #ffffff;
+        }
+
+        .win-message {
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid #ff6b35;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .win-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .reset-btn {
+            background: #ff6b35;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .reset-btn:hover {
+            background: #f7931e;
+        }
+
+        .footer {
+            background: rgba(30, 34, 42, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        .footer a {
+            color: #7c9885;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0;
+            }
+
+            .container {
+                background: white !important;
+                box-shadow: none !important;
+                border: 1px solid #000 !important;
+            }
+
+            .header, .footer {
+                background: white !important;
+                color: black !important;
+            }
+
+            .title, .subtitle {
+                color: black !important;
+            }
+
+            .setup-section, .error-message {
+                display: none !important;
+            }
+
+            .game-section {
+                display: block !important;
+            }
+
+            .bingo-board {
+                background: white !important;
+            }
+
+            .bingo-cell {
+                background: white !important;
+                color: black !important;
+                border: 1px solid #000 !important;
+            }
+
+            .bingo-cell.center {
+                background: #ddd !important;
+                color: black !important;
+            }
+
+            .bingo-cell.winning {
+                background: #999 !important;
+                color: black !important;
+            }
+
+            .win-message {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+
+            .header, .content {
+                padding: 20px;
+            }
+
+            .title {
+                font-size: 24px;
+            }
+
+            .bingo-cell {
+                font-size: 10px;
+                min-height: 60px;
+                padding: 5px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .bingo-cell {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">IT Bullshit Bingo</h1>
+            <p class="subtitle">The Corporate Survival Game</p>
+            <p class="description">Generate your own bingo card with IT buzzwords and survive your next meeting!</p>
+        </div>
+
+        <div class="content">
+            <div class="setup-section">
+                <h2 class="section-title">Setup Your Game</h2>
+                <p class="info-text">Add at least 24 buzzwords (one per line) to generate your bingo board. If you provide more than 24 terms, a random subset will be selected for the game.</p>
+                <div class="line-counter" id="lineCounter">Current terms: 0</div>
+                <div class="textarea-container">
+                    <textarea class="terms-textarea" id="termsInput" placeholder="Enter at least 24 buzzwords, one per line..." oninput="updateLineCount()">Strategic Fit
+Disrupt
+Leverage
+Optimize
+Streamline
+Digital Transformation
+Agile
+Scrum
+DevOps
+Cloud Native
+Microservices
+AI/ML
+Big Data
+Blockchain
+IoT
+Data-Driven
+Containerization
+Serverless
+CI/CD
+Infrastructure as Code
+Scalability
+Performance
+Compliance
+Let's align
+Best Practices
+ROI
+KPIs
+Win-win strategy
+Low‑hanging Fruit
+Think Outside the Box
+Game Changer
+Paradigm Shift
+Deep Dive
+Circle Back
+Touch Base
+Holistic View
+Runway
+Pivot
+MVP
+POC
+Technical Debt
+A/B Testing
+North Star Metric
+Single Source of Truth (SSOT)
+Hypergrowth
+Innovation Lab
+Holistic Approach
+Customer‑centric
+Fail Fast
+Move Fast and Break Things</textarea>
+                </div>
+                <button class="generate-btn" onclick="generateBoard()">Generate Bingo Board</button>
+                <div class="error-message" id="errorMessage"></div>
+            </div>
+
+            <div class="game-section" id="gameSection">
+                <h2 class="section-title">Your Bingo Board</h2>
+                <div class="win-message" id="winMessage">
+                    <div class="win-text">BINGO! 🎉</div>
+                    <p>You survived another meeting full of buzzwords!</p>
+                    <button class="reset-btn" onclick="resetGame()">Play Again</button>
+                </div>
+                <div class="bingo-board" id="bingoBoard"></div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button class="reset-btn" onclick="resetGame()">New Game</button>
+                    <button class="reset-btn" onclick="window.print()" style="margin-left: 10px;">Print Board</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>A bonus tool from <strong>IT Dictionary</strong> by Adam Korga</p>
+            <p><a href="https://www.adamkorga.com" target="_blank">Visit www.adamkorga.com</a> for the full survival manual<br/>
+            (…and maybe grab the book before your next meeting)</p>
+        </div>
+    </div>
+
+    <script>
+        let gameBoard = [];
+        let markedCells = [];
+
+        function updateLineCount() {
+            const termsInput = document.getElementById('termsInput');
+            const lineCounter = document.getElementById('lineCounter');
+            
+            const terms = termsInput.value
+                .split('\n')
+                .map(term => term.trim())
+                .filter(term => term.length > 0);
+            
+            const count = terms.length;
+            
+            if (count < 24) {
+                lineCounter.textContent = `Current terms: ${count}/24`;
+                lineCounter.style.color = '#ff6b35';
+            } else {
+                lineCounter.textContent = `Current terms: ${count} ✓`;
+                lineCounter.style.color = '#7c9885';
+            }
+        }
+
+        // Initialize line count on page load
+        window.onload = function() {
+            updateLineCount();
+        };
+
+        function generateBoard() {
+            const termsInput = document.getElementById('termsInput');
+            const errorMessage = document.getElementById('errorMessage');
+            const gameSection = document.getElementById('gameSection');
+            const setupSection = document.querySelector('.setup-section');
+
+            // Get terms and clean them
+            const terms = termsInput.value
+                .split('\n')
+                .map(term => term.trim())
+                .filter(term => term.length > 0);
+
+            // Remove "Synergy" from the list if it exists (case insensitive)
+            const filteredTerms = terms.filter(term => term.toLowerCase() !== 'synergy');
+
+            // Validate minimum 24 terms after removing Synergy
+            if (filteredTerms.length < 24) {
+                errorMessage.textContent = `You need at least 24 terms (excluding Synergy). You currently have ${filteredTerms.length} usable terms.`;
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            errorMessage.style.display = 'none';
+
+            // Shuffle and select 24 terms (center will be Synergy)
+            const shuffled = [...filteredTerms].sort(() => Math.random() - 0.5);
+            const selectedTerms = shuffled.slice(0, 24);
+
+            // Create 5x5 grid with Synergy in center
+            gameBoard = [];
+            markedCells = Array(25).fill(false);
+            
+            for (let i = 0; i < 25; i++) {
+                if (i === 12) { // Center position
+                    gameBoard.push('Synergy');
+                    // Synergy space is not pre-marked - users can click it
+                } else {
+                    const termIndex = i < 12 ? i : i - 1;
+                    gameBoard.push(selectedTerms[termIndex]);
+                }
+            }
+
+            renderBoard();
+            setupSection.style.display = 'none';
+            gameSection.style.display = 'block';
+        }
+
+        function renderBoard() {
+            const bingoBoard = document.getElementById('bingoBoard');
+            bingoBoard.innerHTML = '';
+
+            gameBoard.forEach((term, index) => {
+                const cell = document.createElement('div');
+                cell.className = 'bingo-cell';
+                cell.textContent = term;
+                cell.onclick = () => toggleCell(index);
+
+                if (markedCells[index]) {
+                    cell.classList.add('marked');
+                }
+
+                bingoBoard.appendChild(cell);
+            });
+        }
+
+        function toggleCell(index) {
+            // All cells including Synergy can now be toggled
+            markedCells[index] = !markedCells[index];
+            renderBoard();
+            checkWin();
+        }
+
+        function checkWin() {
+            const winMessage = document.getElementById('winMessage');
+            let hasWon = false;
+            let winningCells = [];
+
+            // Check rows
+            for (let row = 0; row < 5; row++) {
+                let rowComplete = true;
+                let rowCells = [];
+                for (let col = 0; col < 5; col++) {
+                    const cellIndex = row * 5 + col;
+                    rowCells.push(cellIndex);
+                    if (!markedCells[cellIndex]) {
+                        rowComplete = false;
+                        break;
+                    }
+                }
+                if (rowComplete) {
+                    hasWon = true;
+                    winningCells = winningCells.concat(rowCells);
+                }
+            }
+
+            // Check columns
+            for (let col = 0; col < 5; col++) {
+                let colComplete = true;
+                let colCells = [];
+                for (let row = 0; row < 5; row++) {
+                    const cellIndex = row * 5 + col;
+                    colCells.push(cellIndex);
+                    if (!markedCells[cellIndex]) {
+                        colComplete = false;
+                        break;
+                    }
+                }
+                if (colComplete) {
+                    hasWon = true;
+                    winningCells = winningCells.concat(colCells);
+                }
+            }
+
+            // Check diagonals
+            let diag1Complete = true;
+            let diag2Complete = true;
+            let diag1Cells = [];
+            let diag2Cells = [];
+            
+            for (let i = 0; i < 5; i++) {
+                const diag1Index = i * 5 + i;
+                const diag2Index = i * 5 + (4 - i);
+                diag1Cells.push(diag1Index);
+                diag2Cells.push(diag2Index);
+                
+                if (!markedCells[diag1Index]) diag1Complete = false;
+                if (!markedCells[diag2Index]) diag2Complete = false;
+            }
+            
+            if (diag1Complete) {
+                hasWon = true;
+                winningCells = winningCells.concat(diag1Cells);
+            }
+            if (diag2Complete) {
+                hasWon = true;
+                winningCells = winningCells.concat(diag2Cells);
+            }
+
+            // Update visual state
+            highlightWinningCells(winningCells);
+            winMessage.style.display = hasWon ? 'block' : 'none';
+        }
+
+        function highlightWinningCells(winningCells) {
+            const cells = document.querySelectorAll('.bingo-cell');
+            cells.forEach((cell, index) => {
+                // Remove previous winning class
+                cell.classList.remove('winning');
+                
+                // Add winning class if this cell is part of a winning line
+                if (winningCells.includes(index)) {
+                    cell.classList.add('winning');
+                }
+            });
+        }
+
+        function resetGame() {
+            const gameSection = document.getElementById('gameSection');
+            const setupSection = document.querySelector('.setup-section');
+            const winMessage = document.getElementById('winMessage');
+
+            gameSection.style.display = 'none';
+            setupSection.style.display = 'block';
+            winMessage.style.display = 'none';
+            
+            gameBoard = [];
+            markedCells = [];
+        }
+    </script>
+</body>
+</html>
