@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT Buzzword Bingo - IT Dictionary Bonus Tool</title>
+    
+    <!-- Open Graph meta tags for better social sharing -->
+    <meta property="og:title" content="IT Bullshit Bingo - The Corporate Survival Game">
+    <meta property="og:description" content="Generate your own bingo card with IT buzzwords and survive your next meeting!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adamkorga.com/tools/bingo.html">
+    <meta property="og:image" content="https://adamkorga.com/image/cover_wip.png">
+    
+    <!-- Twitter Card meta tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="IT Bullshit Bingo - The Corporate Survival Game">
+    <meta name="twitter:description" content="Generate your own bingo card with IT buzzwords and survive your next meeting!">
+    <meta name="twitter:image" content="https://adamkorga.com/image/cover_wip.png">
+    
     <style>
         /* Main styles */
         * {
@@ -70,6 +84,66 @@
             margin-bottom: 15px;
             border-bottom: 1px solid rgba(124, 152, 133, 0.3);
             padding-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .share-label {
+            font-size: 12px;
+            color: #b0b0b0;
+            margin-right: 5px;
+        }
+
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .share-btn img {
+            width: 18px;
+            height: 18px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .share-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .share-btn:hover img {
+            opacity: 1;
+        }
+
+        .share-btn.linkedin:hover {
+            background: #0077b5;
+            border-color: #0077b5;
+        }
+
+        .share-btn.facebook:hover {
+            background: #1877f2;
+            border-color: #1877f2;
+        }
+
+        .share-btn.twitter:hover {
+            background: #1da1f2;
+            border-color: #1da1f2;
         }
 
         .textarea-container {
@@ -306,6 +380,31 @@
                 min-height: 60px;
                 padding: 5px;
             }
+
+            .section-title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .share-buttons {
+                width: 100%;
+                justify-content: flex-end;
+            }
+
+            .share-label {
+                display: none;
+            }
+
+            .share-btn {
+                width: 28px;
+                height: 28px;
+            }
+
+            .share-btn img {
+                width: 16px;
+                height: 16px;
+            }
         }
 
         @media (max-width: 400px) {
@@ -325,7 +424,21 @@
 
         <div class="content">
             <div class="setup-section">
-                <h2 class="section-title">Setup Your Game</h2>
+                <h2 class="section-title">
+                    <span>Setup Your Game</span>
+                    <div class="share-buttons">
+                        <span class="share-label">Share on</span>
+                        <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn(); return false;" title="Share on LinkedIn">
+                            <img src="../image/linkedin.png" alt="LinkedIn">
+                        </a>
+                        <a href="#" class="share-btn facebook" onclick="shareOnFacebook(); return false;" title="Share on Facebook">
+                            <img src="../image/facebook.png" alt="Facebook">
+                        </a>
+                        <a href="#" class="share-btn twitter" onclick="shareOnTwitter(); return false;" title="Share on X">
+                            <img src="../image/twitter_x.png" alt="X">
+                        </a>
+                    </div>
+                </h2>
                 <p class="info-text">Add at least 24 buzzwords (one per line) to generate your bingo board. If you provide more than 24 terms, a random subset will be selected for the game.</p>
                 <div class="line-counter" id="lineCounter">Current terms: 0</div>
                 <div class="textarea-container">
@@ -385,7 +498,21 @@ Move Fast and Break Things</textarea>
             </div>
 
             <div class="game-section" id="gameSection">
-                <h2 class="section-title">Your Bingo Board</h2>
+                <h2 class="section-title">
+                    <span>Your Bingo Board</span>
+                    <div class="share-buttons">
+                        <span class="share-label">Share on</span>
+                        <a href="#" class="share-btn linkedin" onclick="shareOnLinkedIn(); return false;" title="Share on LinkedIn">
+                            <img src="../image/linkedin.png" alt="LinkedIn">
+                        </a>
+                        <a href="#" class="share-btn facebook" onclick="shareOnFacebook(); return false;" title="Share on Facebook">
+                            <img src="../image/facebook.png" alt="Facebook">
+                        </a>
+                        <a href="#" class="share-btn twitter" onclick="shareOnTwitter(); return false;" title="Share on X">
+                            <img src="../image/twitter_x.png" alt="X">
+                        </a>
+                    </div>
+                </h2>
                 <div class="win-message" id="winMessage">
                     <div class="win-text">BINGO! 🎉</div>
                     <p>You survived another meeting full of buzzwords!</p>
@@ -602,6 +729,50 @@ Move Fast and Break Things</textarea>
             
             gameBoard = [];
             markedCells = [];
+        }
+
+        function shareOnLinkedIn() {
+            const url = encodeURIComponent('https://adamkorga.com/tools/bingo.html');
+            const text = encodeURIComponent('Check out this fun IT Buzzword Bingo game! Perfect for surviving corporate meetings 🎯');
+            const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}&summary=${text}`;
+            
+            const left = (screen.width / 2) - (600 / 2);
+            const top = (screen.height / 2) - (400 / 2);
+            
+            window.open(
+                shareUrl, 
+                'linkedin-share', 
+                `width=600,height=400,left=${left},top=${top},scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no`
+            );
+        }
+
+        function shareOnFacebook() {
+            const url = encodeURIComponent('https://adamkorga.com/tools/bingo.html');
+            const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+            
+            const left = (screen.width / 2) - (600 / 2);
+            const top = (screen.height / 2) - (400 / 2);
+            
+            window.open(
+                shareUrl, 
+                'facebook-share', 
+                `width=600,height=400,left=${left},top=${top},scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no`
+            );
+        }
+
+        function shareOnTwitter() {
+            const url = encodeURIComponent('https://adamkorga.com/tools/bingo.html');
+            const text = encodeURIComponent('Playing IT Buzzword Bingo - the corporate survival game! 🎯 #ITHumor #CorporateLife');
+            const shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+            
+            const left = (screen.width / 2) - (600 / 2);
+            const top = (screen.height / 2) - (400 / 2);
+            
+            window.open(
+                shareUrl, 
+                'twitter-share', 
+                `width=600,height=400,left=${left},top=${top},scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no`
+            );
         }
     </script>
 </body>
