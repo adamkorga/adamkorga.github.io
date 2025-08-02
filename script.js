@@ -58,12 +58,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Check for URL parameter on page load
     const urlTab = getUrlParameter('tab');
-    if (urlTab && ['book', 'subscribe', 'amazon'].includes(urlTab)) {
+    if (urlTab && ['book', 'subscribe', 'amazon', 'media'].includes(urlTab)) {
         switchToTab(urlTab);
     }
 
     // Also check for legacy parameter names for flexibility
-    const legacyParams = ['subscribe', 'amazon', 'book'];
+    const legacyParams = ['subscribe', 'amazon', 'book', 'media'];
     legacyParams.forEach(param => {
         if (getUrlParameter(param) !== null) {
             switchToTab(param);
@@ -135,4 +135,31 @@ function updateUrl(tabName) {
         url.searchParams.set('tab', tabName);
     }
     window.history.replaceState({}, '', url);
+}
+
+// Function to download author bio as text file
+function downloadAuthorBio() {
+    const authorBio = `Adam Korga - Author Biography
+
+Adam Korga is a self-proclaimed writer who has survived 20 years in IT, mostly intact. Using a pen name, he tries not to pull punches — though he does flinch when they come back.
+
+He has been a developer, an architect, a scrum master, and a platform guy. He has worked in startups that moved fast and broke things — and in enterprises that moved slow and broke people.
+
+After nearly 20 years of collecting buzzwords, rituals, and pain (in roughly equal parts), he decided it's time someone documented the madness — with just enough irony to survive.
+
+Adam is the author of "IT Dictionary: A Survival Manual for the Tech Circus," a brutally honest guide to tech jargon across 1,666 entries spanning five painfully accurate realms of modern IT culture.
+
+Contact: contact@adamkorga.com
+LinkedIn: https://www.linkedin.com/in/adam-korga/
+Facebook: https://www.facebook.com/adamkorga.author`;
+
+    const blob = new Blob([authorBio], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'adam-korga-author-bio.txt';
+    document.body.appendChild(a);
+    a.click();
+    window.URL.revokeObjectURL(url);
+    document.body.removeChild(a);
 }
