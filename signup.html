@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Dictionary - The Survival Manual Every Tech Worker Needs</title>
+    <meta name="description" content="From debugging trenches to AI hype - decode the secret language of IT with 1,666 brutally honest translations.">
+    
+    <link rel="stylesheet" href="aweber.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animated background particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .particle {
+            position: absolute;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Header */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 255, 136, 0.05) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .hero-text .tagline {
+            font-size: 1.4rem;
+            color: #00ff88;
+            margin-bottom: 30px;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .hero-text .description {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-quote {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 255, 136, 0.05) 100%);
+            border-left: 4px solid #00ff88;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-quote blockquote {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #fff;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .hero-quote cite {
+            color: #00ff88;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .hero-details {
+            margin: 40px 0;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .detail-item {
+            text-align: center;
+        }
+
+        .detail-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00ff88;
+            line-height: 1;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .detail-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-cta {
+            margin: 40px 0 0 0;
+            text-align: center;
+        }
+
+        .hero-cta-note {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+
+        .book-cover {
+            position: relative;
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: transform 0.3s ease;
+        }
+
+        .book-cover:hover {
+            transform: perspective(1000px) rotateY(-5deg) scale(1.05);
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 50px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Quote Section */
+        .quotes-section {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .quote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .quote-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .quote-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 255, 136, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .quote-card blockquote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .quote-card .source {
+            color: #00ff88;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .cta-section .subtitle {
+            font-size: 1.2rem;
+            color: #00ff88;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .signup-form {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 20px;
+            padding: 50px 40px;
+            backdrop-filter: blur(15px);
+            margin: 40px 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            display: flex;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        .form-group input {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 200px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+            background: linear-gradient(135deg, #00cc6a 0%, #00ff88 100%);
+        }
+
+        .benefits {
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        .benefits h4 {
+            color: #00ff88;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .benefits ul {
+            list-style: none;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .benefits li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .benefits li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .disclaimer {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* Examples Section */
+        .examples-section {
+            padding: 100px 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .examples-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 50px;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .example-table {
+            width: 100%;
+            font-size: 0.85rem;
+        }
+
+        .example-table th {
+            color: #00ff88;
+            padding: 8px 5px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+            font-size: 0.8rem;
+        }
+
+        .example-table td {
+            padding: 12px 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            vertical-align: top;
+        }
+
+        .example-table .term {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .example-table .sounds-like {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+        }
+
+        .example-table .really-means {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Future Projects Section */
+        .future-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.03) 0%, rgba(0, 0, 0, 0.2) 100%);
+            text-align: center;
+        }
+
+        .future-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .future-section h2 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .future-section .subtitle {
+            font-size: 1.1rem;
+            color: #00ff88;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .future-section .description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .future-teasers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .teaser-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .teaser-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 136, 0.4);
+        }
+
+        .teaser-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #00ff88;
+        }
+
+        .teaser-item h4 {
+            color: #fff;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .teaser-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        /* Aweber form integration */
+        .aweber-integrated-form {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .aweber-integrated-form .form-group {
+            display: flex;
+            gap: 15px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            flex-wrap: wrap;
+        }
+
+        .aweber-integrated-form .form-group input[type="text"],
+        .aweber-integrated-form .form-group input[type="email"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .aweber-integrated-form .form-group input[type="text"]:focus,
+        .aweber-integrated-form .form-group input[type="email"]:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+
+        .aweber-integrated-form .form-group input[type="text"]::placeholder,
+        .aweber-integrated-form .form-group input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .aweber-integrated-form .cta-button {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 200px;
+        }
+
+        .aweber-integrated-form .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+            background: linear-gradient(135deg, #00cc6a 0%, #00ff88 100%);
+        }
+
+        /* Mobile responsiveness for Aweber form */
+        @media (max-width: 768px) {
+            .aweber-integrated-form .form-group {
+                flex-direction: column;
+                max-width: 400px;
+            }
+            
+            .aweber-integrated-form .form-group input[type="text"],
+            .aweber-integrated-form .form-group input[type="email"] {
+                min-width: auto;
+            }
+        }
+        .footer {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .footer-content {
+            opacity: 0.8;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: #00ff88;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsiveness */
+            @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .book-cover {
+                max-width: 300px;
+                margin: 0 auto;
+                transform: none;
+            }
+
+            .form-group {
+                flex-direction: column;
+            }
+
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quote-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .detail-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>IT Dictionary</h1>
+                    <div class="tagline">The Survival Manual Every Tech Worker Needs</div>
+                    <div class="description">
+                        From debugging trenches and absurd Agile rituals, through corporate bureaucracy to startup chaos and AI's confident hallucinations—decode the secret language of IT with <strong>1,666 brutally honest translations</strong>.
+                    </div>
+                    
+                    <!-- Hero Quote -->
+                    <div class="hero-quote">
+                        <blockquote>"AI doesn't hallucinate; it just confidently explains things it doesn't understand—like your boss in a strategy meeting."</blockquote>
+                        <cite>— From IT Dictionary</cite>
+                    </div>
+                    
+                    <!-- Hero Details -->
+                    <div class="hero-details">
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <div class="detail-number">5</div>
+                                <div class="detail-text">Realms of Tech Hell</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-number">1,666</div>
+                                <div class="detail-text">Terms Translated</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-number">20</div>
+                                <div class="detail-text">Years of IT Trauma</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero CTA -->
+                    <div class="hero-cta">
+                        <button class="cta-button" onclick="document.getElementById('mainCTA').scrollIntoView({behavior: 'smooth'})">
+                            Get Early Access
+                        </button>
+                        <div class="hero-cta-note">Join 500+ tech survivors on the list</div>
+                    </div>
+                </div>
+                <div class="book-cover">
+                    <img src="image/cover_wip2.svg" alt="IT Dictionary Book Cover" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="quotes-section">
+        <div class="container">
+            <div class="quote-grid">
+                <div class="quote-card">
+                    <blockquote>"A sprint without scope creep is like a unicorn—you've heard of it, but you'll never see one."</blockquote>
+                    <div class="source">— From Agile Rituals</div>
+                </div>
+                <div class="quote-card">
+                    <blockquote>"AI doesn't hallucinate; it just confidently explains things it doesn't understand—like your boss in a strategy meeting."</blockquote>
+                    <div class="source">— From The New Kid in Town</div>
+                </div>
+                <div class="quote-card">
+                    <blockquote>"We're not deploying—we're stress-testing production."</blockquote>
+                    <div class="source">— From Core IT Survival</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section class="examples-section">
+        <div class="container">
+            <h2>See What You're Getting Into</h2>
+            <div class="example-grid">
+                <div class="example-card">
+                    <h3 style="color: #00ff88; margin-bottom: 20px;">Core IT Survival</h3>
+                    <table class="example-table">
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>What It Sounds Like</th>
+                                <th>What It Really Means</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="term">PEBKAC</td>
+                                <td class="sounds-like">Problem Exists Between Keyboard And Chair</td>
+                                <td class="really-means">Timeless way to say: You broke it yourself.</td>
+                            </tr>
+                            <tr>
+                                <td class="term">Layer 8 Issue</td>
+                                <td class="sounds-like">A fictional "extra" OSI layer</td>
+                                <td class="really-means">The problem isn't technical—it's you.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="example-card">
+                    <h3 style="color: #00ff88; margin-bottom: 20px;">Startup Chaos</h3>
+                    <table class="example-table">
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>What It Sounds Like</th>
+                                <th>What It Really Means</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="term">Beta Launch</td>
+                                <td class="sounds-like">Early access for select users</td>
+                                <td class="really-means">It's broken, but we're calling it 'co-creation with our community'</td>
+                            </tr>
+                            <tr>
+                                <td class="term">Stealth Mode</td>
+                                <td class="sounds-like">We're working under the radar</td>
+                                <td class="really-means">We have no customers, no product, and possibly no idea</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Future Projects Section -->
+    <section class="future-section">
+        <div class="container">
+            <div class="future-content">
+                <h2>This Is Just the Beginning</h2>
+                <div class="subtitle">More brutally honest guides coming soon</div>
+                <div class="description">
+                    IT Dictionary is just the first mission in a larger campaign to cut through pompous jargon and explain the world as it really is. Future projects will tackle everything from legendary tech failures to universal life lessons—all with the same wit and unvarnished truth.
+                </div>
+                
+                <div class="description" style="background: rgba(0, 255, 136, 0.1); border-left: 4px solid #00ff88; padding: 20px; margin: 30px 0; border-radius: 8px; font-style: italic;">
+                    <strong>Personal motto:</strong><br>
+                    "Some people need to take a shit in the morning, others feel the need to perform an act of defecation. My goal is to cut through the pompous jargon so people can simply understand each other."
+                </div>
+                
+                <div class="future-teasers">
+                    <div class="teaser-item">
+                        <div class="icon">💥</div>
+                        <h4>Epic Failures</h4>
+                        <p>Turning real tech disasters into engaging stories you can actually learn from</p>
+                    </div>
+                    <div class="teaser-item">
+                        <div class="icon">🧠</div>
+                        <h4>Cognitive Fallacies</h4>
+                        <p>Why we make terrible decisions and how to make slightly less terrible ones</p>
+                    </div>
+                    <div class="teaser-item">
+                        <div class="icon">🎯</div>
+                        <h4>Universal Truths</h4>
+                        <p>Complex topics made simple, minus the academic pretension—some might even be for younger audiences</p>
+                    </div>
+                </div>
+                
+                <div class="description" style="margin-top: 30px; font-style: italic;">
+                    Join the list to be the first to know when these "absurd new projects" launch. Because someone needs to keep calling out the BS, one book at a time.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="mainCTA">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join the Survival Squad</h2>
+                <div class="subtitle">Get notified when IT Dictionary launches (September 2025)</div>
+                
+                <div class="signup-form">
+                    <form method="post" action="https://www.aweber.com/scripts/addlead.pl" accept-charset="UTF-8" class="aweber-integrated-form">
+                        <input type="hidden" name="meta_web_form_id" value="527224186">
+                        <input type="hidden" name="listname" value="awlist6895310">
+                        <input type="hidden" name="redirect" value="https://adamkorga.com/confirmation.html">
+                        <input type="hidden" name="meta_redirect_onlist" value="https://adamkorga.com/already-subscribed.html">
+                        <input type="hidden" name="meta_adtracking" value="landing" id="trackingSource">
+                        <input type="hidden" name="meta_message" value="1">
+                        <input type="hidden" name="meta_required" value="name,email">
+                        <input type="hidden" name="meta_tooltip" value="">
+                        
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your name" required>
+                            <input type="email" name="email" placeholder="Your email address" required>
+                            <button type="submit" class="cta-button">Join the List</button>
+                        </div>
+                    </form>
+                    
+                    <div class="benefits">
+                        <h4>What you'll get:</h4>
+                        <ul>
+                            <li>Launch notification with early access</li>
+                            <li>Bonus content and exclusive excerpts</li>
+                            <li>Behind-the-scenes development updates</li>
+                            <li>First look at future "absurd new projects"</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="disclaimer">
+                        No spam. No discount codes for toasters. No AI-generated nonsense.<br>
+                        Just honest, occasional updates that respect your time—and your inbox.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>IT Dictionary by Adam Korga</p>
+                <p>A survival manual for devs, dreamers, and those still pretending their job has structure</p>
+                <p><a href="https://www.adamkorga.com">adamkorga.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Create animated particles
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        // Smooth scrolling for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialize particles when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            
+            // Set up dynamic source tracking
+            const urlParams = new URLSearchParams(window.location.search);
+            const source = urlParams.get('source');
+            const trackingField = document.getElementById('trackingSource');
+            
+            if (source) {
+                trackingField.value = 'landing-' + source;
+            } else {
+                trackingField.value = 'landing';
+            }
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.quote-card, .example-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

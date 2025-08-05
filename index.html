@@ -215,7 +215,7 @@
                                     value="https://adamkorga.github.io/confirmation.html">
                                 <input type="hidden" name="meta_redirect_onlist"
                                     value="https://adamkorga.github.io/already-subscribed.html">
-                                <input type="hidden" name="meta_adtracking" value="IT_Dictionary_List">
+                                <input type="hidden" name="meta_adtracking" value="index" id="indexTrackingSource">
                                 <input type="hidden" name="meta_message" value="1">
                                 <input type="hidden" name="meta_required" value="name,email">
                                 <input type="hidden" name="meta_tooltip" value="">
@@ -331,6 +331,21 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Set up dynamic source tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const source = urlParams.get('source');
+            const trackingField = document.getElementById('indexTrackingSource');
+            
+            if (source) {
+                trackingField.value = 'index-' + source;
+            } else {
+                trackingField.value = 'index';
+            }
+        });
+    </script>
 </body>
 
 </html>
