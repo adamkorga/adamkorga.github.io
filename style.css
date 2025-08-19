@@ -256,7 +256,9 @@ body {
     top: 0;
     right: 0;
     width: 180px;
+    max-height: 240px;
     height: auto;
+    object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
