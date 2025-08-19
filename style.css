@@ -635,6 +635,9 @@ body {
     transition: background-color 0.3s ease;
     white-space: nowrap;
     margin-left: 20px;
+    width: 140px;
+    text-align: center;
+    display: inline-block;
 }
 
 .download-button:hover {
