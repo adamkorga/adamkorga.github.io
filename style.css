@@ -373,21 +373,21 @@ body {
 }
 
 .subscribe-title {
-    font-size: 28px;
+    font-size: 24px;
     color: #ffffff;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .subscribe-description {
     text-align: left;
-    margin-bottom: 40px;
+    margin-bottom: 25px;
     color: #d0d0d0;
     line-height: 1.6;
 }
 
 .subscribe-description p {
     font-size: 16px;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 }
 
 .subscribe-description p strong {
@@ -396,15 +396,24 @@ body {
 }
 
 .subscribe-description ul {
-    margin: 15px 0 20px 20px;
+    margin: 0 0 0px 20px;
     padding-left: 20px;
 }
 
 .subscribe-description li {
     font-size: 15px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: #b8b8b8;
     list-style-type: disc;
+    line-height: 1.4;
+}
+
+.content-section {
+    margin-bottom: 20px;
+}
+
+.content-section:last-of-type {
+    margin-bottom: 15px;
 }
 
 .subscribe-cta {
@@ -412,19 +421,40 @@ body {
     color: #ff6b35 !important;
     font-weight: 600 !important;
     text-align: center !important;
-    margin-top: 25px !important;
+    margin: 20px 0 15px 0 !important;
     padding: 15px;
     background: rgba(255, 107, 53, 0.1);
     border-radius: 8px;
     border-left: 4px solid #ff6b35;
 }
 
+.subscribe-cta p {
+    margin: 0 !important;
+}
+
+.welcome-gift-highlight {
+    background: rgba(124, 152, 133, 0.15);
+    border: 1px solid rgba(124, 152, 133, 0.3);
+    border-radius: 6px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.welcome-gift-highlight p {
+    margin: 0 !important;
+    color: #7c9885 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+}
+
 .form-placeholder {
     background: rgba(20, 24, 32, 0.6);
     border: 2px dashed #7c9885;
     border-radius: 8px;
-    padding: 40px;
+    padding: 25px;
     text-align: center;
+    margin-top: 0;
 }
 
 .form-placeholder h4 {
