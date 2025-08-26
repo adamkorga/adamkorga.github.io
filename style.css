@@ -699,7 +699,6 @@ body {
 }
 
 .media-footer {
-    margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     text-align: center;
@@ -723,6 +722,29 @@ body {
 .usage-note {
     font-style: italic;
     color: #888;
+}
+
+.polish-footnote {
+    text-align: center;
+    margin: 20px 0 0 0;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.polish-footnote p {
+    color: #b0b0b0;
+    font-size: 13px;
+    margin: 0;
+    font-style: italic;
+}
+
+.polish-footnote a {
+    color: #7c9885;
+    text-decoration: none;
+}
+
+.polish-footnote a:hover {
+    text-decoration: underline;
 }
 
 /* Responsive adjustments for Media Downloads */
