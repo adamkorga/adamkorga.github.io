@@ -305,6 +305,72 @@
             text-decoration: underline;
         }
 
+        .copyright {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .copyright-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: #666;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            line-height: 16px;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: help;
+            position: relative;
+        }
+
+        .copyright-icon:hover {
+            background: #7c9885;
+        }
+
+        .copyright-tooltip {
+            visibility: hidden;
+            opacity: 0;
+            width: 300px;
+            background: rgba(20, 24, 32, 0.95);
+            color: #e0e0e0;
+            text-align: left;
+            border-radius: 8px;
+            padding: 12px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            font-size: 11px;
+            line-height: 1.4;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .copyright-tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(20, 24, 32, 0.95) transparent transparent transparent;
+        }
+
+        .copyright-icon:hover .copyright-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
         /* Print styles */
         @media print {
             body {
@@ -530,6 +596,20 @@ Move Fast and Break Things</textarea>
             <p>A bonus tool from <strong>IT Dictionary</strong> by Adam Korga</p>
             <p><a href="https://www.adamkorga.com" target="_blank">Visit www.adamkorga.com</a> for the full survival manual<br/>
             (…and maybe grab the book before your next meeting)</p>
+            
+            <div class="copyright">
+                © 2025 Adam Korga
+                <span class="copyright-icon">
+                    ℹ
+                    <div class="copyright-tooltip">
+                        © 2025 Adam Korga.<br><br>
+                        This little survival game is distributed as a standalone HTML file (with embedded JS & CSS).<br><br>
+                        Feel free to copy, adapt, and share it during your next endless meeting —<br>
+                        but please keep the author credit and a link to my website (<a href="https://www.adamkorga.com" style="color: #7c9885;">https://www.adamkorga.com</a>).<br><br>
+                        Because buzzwords may be free, but satire deserves attribution.
+                    </div>
+                </span>
+            </div>
         </div>
     </div>
 
