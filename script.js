@@ -58,12 +58,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Check for URL parameter on page load
     const urlTab = getUrlParameter('tab');
-    if (urlTab && ['book', 'subscribe', 'amazon', 'media'].includes(urlTab)) {
+
+    if (urlTab && ['book', 'coverage', 'subscribe', 'amazon', 'media'].includes(urlTab)) {
         switchToTab(urlTab);
     }
 
     // Also check for legacy parameter names for flexibility
-    const legacyParams = ['subscribe', 'amazon', 'book', 'media'];
+    const legacyParams = ['subscribe', 'amazon', 'book', 'media', 'coverage'];
     legacyParams.forEach(param => {
         if (getUrlParameter(param) !== null) {
             switchToTab(param);
