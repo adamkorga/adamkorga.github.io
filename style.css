@@ -840,10 +840,18 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body {
+        min-height: 100vh;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
     .container {
         grid-template-columns: 1fr;
         max-height: none;
+        min-height: auto;
         height: auto;
+        margin: 0 auto;
     }
 
     .author-section {
@@ -861,6 +869,9 @@ body {
 
     .tab-content {
         padding: 20px;
+        max-height: none;
+        overflow-y: visible;
+        height: auto;
     }
 
     .book-title {
@@ -959,6 +970,27 @@ body {
 
     .book-title {
         font-size: 24px;
+    }
+}
+
+/* Responsive Design for smaller height windows */
+@media (max-height: 700px) {
+    body {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .container {
+        max-height: none;
+        min-height: auto;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .tab-content {
+        max-height: none;
+        overflow-y: visible;
+        height: auto;
     }
 }
 
